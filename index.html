@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>Dashboard Rumah Sakit BSH</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="skeletonRoot" class="skeleton-page">
+      <div class="skeleton-topbar"></div>
+      <div class="skeleton-kpi-row">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+      <div class="skeleton-section-title"></div>
+      <div class="skeleton-metric-grid">
+        <div class="skeleton-metric-card"></div>
+        <div class="skeleton-metric-card"></div>
+        <div class="skeleton-metric-card"></div>
+        <div class="skeleton-metric-card"></div>
+      </div>
+    </div>
+
+    <div id="dashboardRoot" class="app hidden">
+      <header class="topbar">
+        <div class="topbar-left">
+          <div class="brand-badge">BSH</div>
+          <div>
+            <h1 class="brand-title">Dashboard Rumah Sakit</h1>
+            <p class="brand-subtitle">BSH Information System</p>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button
+            type="button"
+            id="themeToggle"
+            class="theme-toggle"
+            aria-label="Toggle color theme"
+          >
+            Dark mode
+          </button>
+          <div class="pill">
+            <span class="pill-label">Periode</span>
+            <span class="pill-value">1–14 Januari 2026</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="kpi-section">
+          <article class="kpi-card kpi-today">
+            <div class="kpi-header">
+              <h2>Revenue Hari Ini</h2>
+              <span class="kpi-tag kpi-tag-positive">Live</span>
+            </div>
+            <p class="kpi-value" id="todayRevenueText">Rp 72.003</p>
+            <p class="kpi-caption">Update angka setiap pergantian hari.</p>
+            <div class="kpi-input-row">
+              <input
+                type="number"
+                id="inputTodayRevenue"
+                placeholder="Masukkan revenue hari ini"
+              />
+              <button type="button" onclick="updateTodayRevenue()">
+                Simpan
+              </button>
+            </div>
+          </article>
+
+          <article class="kpi-card kpi-total">
+            <div class="kpi-header">
+              <h2>Total Revenue</h2>
+              <span class="kpi-tag">
+                <span id="totalRevenuePercent">33.9%</span> dari target
+              </span>
+            </div>
+            <p class="kpi-value kpi-value-accent" id="revenueText">
+              Rp 237.362.700
+            </p>
+            <p class="kpi-caption">
+              Total kumulatif selama periode laporan berjalan.
+            </p>
+            <div class="kpi-input-row">
+              <input
+                type="number"
+                id="inputRevenue"
+                placeholder="Masukkan total revenue"
+              />
+              <button type="button" onclick="updateRevenue()">Simpan</button>
+            </div>
+          </article>
+
+          <article class="kpi-card kpi-target">
+            <div class="kpi-header">
+              <h2>Target Revenue</h2>
+              <span class="kpi-tag kpi-tag-neutral">Target 2 minggu</span>
+            </div>
+            <p class="kpi-value kpi-value-warning" id="targetRevenueText">
+              Rp 7.002.000
+            </p>
+            <p class="kpi-caption">
+              Sesuaikan target bila ada perubahan planning keuangan.
+            </p>
+            <div class="kpi-input-row">
+              <input
+                type="number"
+                id="inputTargetRevenue"
+                placeholder="Masukkan target revenue"
+              />
+              <button type="button" onclick="updateTargetRevenue()">
+                Simpan
+              </button>
+            </div>
+          </article>
+        </section>
+
+        <section class="section-header">
+          <div>
+            <h2>Overview Pasien dan Layanan</h2>
+            <p>
+              Pantau performa layanan utama terhadap target kunjungan dan
+              tindakan.
+            </p>
+          </div>
+        </section>
+
+        <section class="metric-grid">
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Rawat Inap</h3>
+              <span class="metric-percent metric-percent-warning">
+                42% tercapai
+              </span>
+            </div>
+            <div class="metric-stats">
+              <div class="metric-stat">
+                <span class="metric-label">Today</span>
+                <span class="metric-value metric-value-blue">45</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">YTD</span>
+                <span class="metric-value metric-value-purple">2000</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">Target</span>
+                <span class="metric-value">4800</span>
+              </div>
+            </div>
+            <div class="metric-progress">
+              <div
+                class="metric-progress-bar metric-progress-warning"
+                style="width: 42%"
+              ></div>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Rawat Jalan</h3>
+              <span class="metric-percent metric-percent-warning">
+                47% tercapai
+              </span>
+            </div>
+            <div class="metric-stats">
+              <div class="metric-stat">
+                <span class="metric-label">Today</span>
+                <span class="metric-value metric-value-blue">1200</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">YTD</span>
+                <span class="metric-value metric-value-purple">3000</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">Target</span>
+                <span class="metric-value">6400</span>
+              </div>
+            </div>
+            <div class="metric-progress">
+              <div
+                class="metric-progress-bar metric-progress-warning"
+                style="width: 47%"
+              ></div>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>IGD</h3>
+              <span class="metric-percent metric-percent-complete">
+                299% tercapai
+              </span>
+            </div>
+            <div class="metric-stats">
+              <div class="metric-stat">
+                <span class="metric-label">Today</span>
+                <span class="metric-value metric-value-blue">2</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">YTD</span>
+                <span class="metric-value metric-value-purple">233</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">Target</span>
+                <span class="metric-value">78</span>
+              </div>
+            </div>
+            <div class="metric-progress">
+              <div
+                class="metric-progress-bar metric-progress-complete"
+                style="width: 100%"
+              ></div>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>POLI</h3>
+              <span class="metric-percent metric-percent-complete">
+                164% tercapai
+              </span>
+            </div>
+            <div class="metric-stats">
+              <div class="metric-stat">
+                <span class="metric-label">Today</span>
+                <span class="metric-value metric-value-blue">2</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">YTD</span>
+                <span class="metric-value metric-value-purple">1061</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">Target</span>
+                <span class="metric-value">645</span>
+              </div>
+            </div>
+            <div class="metric-progress">
+              <div
+                class="metric-progress-bar metric-progress-complete"
+                style="width: 100%"
+              ></div>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Radiologi MRI</h3>
+              <span class="metric-percent metric-percent-complete">
+                120% tercapai
+              </span>
+            </div>
+            <div class="metric-stats">
+              <div class="metric-stat">
+                <span class="metric-label">Today</span>
+                <span class="metric-value metric-value-blue">2</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">YTD</span>
+                <span class="metric-value metric-value-purple">233</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">Target</span>
+                <span class="metric-value">78</span>
+              </div>
+            </div>
+            <div class="metric-progress">
+              <div
+                class="metric-progress-bar metric-progress-complete"
+                style="width: 100%"
+              ></div>
+            </div>
+          </article>
+
+          <article class="metric-card">
+            <div class="metric-header">
+              <h3>Rehabilitasi</h3>
+              <span class="metric-percent metric-percent-complete">
+                132% tercapai
+              </span>
+            </div>
+            <div class="metric-stats">
+              <div class="metric-stat">
+                <span class="metric-label">Today</span>
+                <span class="metric-value metric-value-blue">2</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">YTD</span>
+                <span class="metric-value metric-value-purple">233</span>
+              </div>
+              <div class="metric-stat">
+                <span class="metric-label">Target</span>
+                <span class="metric-value">78</span>
+              </div>
+            </div>
+            <div class="metric-progress">
+              <div
+                class="metric-progress-bar metric-progress-complete"
+                style="width: 100%"
+              ></div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
